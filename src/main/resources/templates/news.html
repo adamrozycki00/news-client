@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+
+    <h1>U.S. Top Headlines</h1>
+
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Authors</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Link</th>
+        </tr>
+        <tr th:each="article : ${news}">
+            <td th:text="${article.getPublishedAt()}"></td>
+            <td th:text="${article.getAuthor()} ? ${article.getAuthor()} : ''"></td>
+            <td th:text="${article.getDescription()}"></td>
+            <td><img th:src="${article.getUrlToImage()}" th:width="125"></td>
+            <td><a th:href="${article.getUrl()}">Read article</a></td>
+        </tr>
+    </table><br />
+
+</body>
+</html>
